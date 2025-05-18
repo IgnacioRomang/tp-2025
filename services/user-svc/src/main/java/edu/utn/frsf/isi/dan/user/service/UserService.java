@@ -47,6 +47,7 @@ public class UserService {
         usuarioRepository.save(usuario);
 
         // Crear y guardar la tarjeta de crédito
+        
         TarjetaCredito tarjetaCredito = huespedRecord.toTarjetaCredito();
         tarjetaCredito.setHuesped(usuario);
         tarjetaCredito.setBanco(banco);
