@@ -14,8 +14,9 @@ import jakarta.persistence.*;
 public abstract class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    protected Integer id;
+    protected Long id;
 
+    protected String dni;
     protected String nombre;
     protected String email;
     protected String telefono;

@@ -18,6 +18,7 @@ CREATE TABLE users.cuentas_bancarias (
 CREATE TABLE users.usuarios (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(255) NOT NULL,
+    dni VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL,
     telefono VARCHAR(255) NOT NULL,
     tipo VARCHAR(255) NOT NULL,
@@ -38,5 +39,5 @@ CREATE TABLE users.tarjetas_credito (
     usuario_id INT NOT NULL,
     banco_id INT NOT NULL,
     FOREIGN KEY (banco_id) REFERENCES users.bancos(id),
-    FOREIGN KEY (usuario_id) REFERENCES users.usuarios(id)
+    FOREIGN KEY (usuario_id) REFERENCES users.usuarios(id) ON DELETE CASCADE
 );
