@@ -12,7 +12,7 @@ public class CuentaBancaria {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     @Column(name = "numero_cuenta")
     private String numeroCuenta;

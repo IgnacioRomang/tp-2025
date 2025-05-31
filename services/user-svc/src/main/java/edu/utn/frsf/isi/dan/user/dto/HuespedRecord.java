@@ -46,7 +46,7 @@ public record HuespedRecord(
     Boolean esPrincipalCC,
     @NotNull(message = "El ID del banco es obligatorio")
     @Min(value = 1, message = "El ID del banco debe ser un número positivo")
-    Integer idBanco
+    Long idBanco
 ) {
 
     public Huesped toHuesped() {

@@ -13,7 +13,7 @@ public record CuentaBancariaRecord(
     @NotBlank(message = "El número de cuenta no puede estar vacío")
     String alias,
     @NotNull(message = "El banco no puede estar vacío")
-    Integer idBanco
+    Long idBanco
 ) {
     public CuentaBancaria toCuentaBancaria() {
         CuentaBancaria cuentaBancaria = new CuentaBancaria();

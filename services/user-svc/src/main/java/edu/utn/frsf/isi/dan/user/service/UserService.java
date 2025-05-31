@@ -17,9 +17,7 @@ import jakarta.persistence.EntityNotFoundException;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springdoc.core.converters.models.Sort;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -63,7 +61,7 @@ public class UserService {
         TarjetaCredito tarjetaCredito = huespedRecord.toTarjetaCredito();
         tarjetaCredito.setHuesped(usuario);
         tarjetaCredito.setBanco(banco);
-        TarjetaCredito tarjetaCreditoSaved =tarjetaCreditoRepository.save(tarjetaCredito);
+        TarjetaCredito tarjetaCreditoSaved = tarjetaCreditoRepository.save(tarjetaCredito);
         if (usuario.getTarjetaCredito() == null) {
             usuario.setTarjetaCredito(new ArrayList<>());
         }
@@ -109,8 +107,8 @@ public class UserService {
                 throw new EntityNotFoundException("Campo de búsqueda no soportado: " + field);
         }
     }
+    
     public void crearUsuarioPropietario(PropietarioRecord propietarioRecord) {
-        // Buscar el banco por ID
         Optional<Banco> bancoOptional = bancoRepository.findById(propietarioRecord.cuentaBancaria().idBanco());
         if (bancoOptional.isEmpty()) {
             throw new IllegalArgumentException("Banco no encontrado con ID: " + propietarioRecord.cuentaBancaria().idBanco());
@@ -124,5 +122,4 @@ public class UserService {
         propietario.setCuentaBancaria(cuentaBancariaRepository.save(cuentaBancaria));
         usuarioRepository.save(propietario);
     }
-    
 }

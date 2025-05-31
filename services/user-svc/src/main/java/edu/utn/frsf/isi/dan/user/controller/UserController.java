@@ -2,6 +2,7 @@ package edu.utn.frsf.isi.dan.user.controller;
 
 import edu.utn.frsf.isi.dan.user.dto.HuespedRecord;
 import edu.utn.frsf.isi.dan.user.dto.PropietarioRecord;
+import edu.utn.frsf.isi.dan.user.dto.TarjetaCreditoRecord;
 import edu.utn.frsf.isi.dan.user.model.Huesped;
 import edu.utn.frsf.isi.dan.user.model.Usuario;
 import edu.utn.frsf.isi.dan.user.service.UserService;
@@ -22,6 +23,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
+
 
 
 @Tag(name = "User Controller", description = "Operaciones para la gestión de usuarios")
@@ -65,12 +67,13 @@ public class UserController {
                     @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "400", description = "Error en la solicitud"),
                     @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "500", description = "Error interno del servidor")}
     )
+
     @DeleteMapping("/huesped/{id}")
     public ResponseEntity<Long> removeUsuarioHuesped(@PathVariable Long id){
         Long id_remove = userService.removeUsuarioHuesped(id);
         return new ResponseEntity<>(id_remove,HttpStatus.OK);
     }
-
+ 
 
     @Operation(summary = "Buscar usuario huésped por campo y valor", 
                 description = "Este endpoint permite buscar un usuario huésped dinámicamente utilizando el nombre del campo y su valor correspondiente. Por ejemplo: field=dni&value=435343434",
@@ -83,10 +86,8 @@ public class UserController {
     public ResponseEntity<Page<Usuario>> getUsuarios(
         @Parameter(description = "Nombre del campo por el cual se desea buscar (ej: dni)")
         @RequestParam String field,
-
         @Parameter(description = "Valor que se desea buscar para el campo indicado")
         @RequestParam String value,
-
         @ParameterObject Pageable pageable
     ) {
         Page<Usuario> usuarios = userService.getUsuarios(field, value, pageable);

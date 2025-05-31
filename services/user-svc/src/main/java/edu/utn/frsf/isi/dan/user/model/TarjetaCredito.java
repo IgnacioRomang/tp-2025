@@ -21,7 +21,7 @@ public class TarjetaCredito {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     @Column(name = "numero_tarjeta")
     private String numero;
