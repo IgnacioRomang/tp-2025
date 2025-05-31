@@ -17,7 +17,7 @@ De cada propietario se registrará además de los datos de usuario
   - la cuenta bancaria 
   - el id de hotel (en la primer etapa este valor sera null porque se creará en el microservicio de la etapa 2)
 
-## Gestionar usuarios
+## Gestionar usuarios
 - De los usuarios huesped se pueden actualizar los datos del usuario y la fecha de nacimiento
 - Se deben poder buscar usuarios por nombre o DNI (agregue este campo al modelo y a la base de datos)
 - Borrar un huesped del sistema. Borrar en cascada también sus tarjetas de crédito.
