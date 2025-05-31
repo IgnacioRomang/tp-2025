@@ -2,18 +2,14 @@ package edu.utn.frsf.isi.dan.user.service;
 
 import java.util.List;
 
-import javax.naming.NameNotFoundException;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import edu.utn.frsf.isi.dan.user.dao.BancoRepository;
 import edu.utn.frsf.isi.dan.user.dto.BancoRecord;
 import edu.utn.frsf.isi.dan.user.model.Banco;
-import edu.utn.frsf.isi.dan.user.model.Usuario;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 

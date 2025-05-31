@@ -1,9 +1,6 @@
 package edu.utn.frsf.isi.dan.user.dto;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import edu.utn.frsf.isi.dan.user.model.TarjetaCredito;
-
 
 public record TarjetaCreditoRecord(
     String numero,

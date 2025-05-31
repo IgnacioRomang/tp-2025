@@ -1,12 +1,10 @@
 package edu.utn.frsf.isi.dan.user.dto;
 
 import edu.utn.frsf.isi.dan.user.model.Propietario;
-import io.micrometer.common.lang.NonNull;
+
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
-
-import javax.print.DocFlavor.STRING;
 
 import org.hibernate.validator.constraints.Length;
 
