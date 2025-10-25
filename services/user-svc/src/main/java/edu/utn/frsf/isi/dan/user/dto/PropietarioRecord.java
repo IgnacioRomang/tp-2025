@@ -15,13 +15,16 @@ public record PropietarioRecord(
     @Email(message = "El email no es válido")
     String email,
     @NotBlank(message = "El teléfono no puede estar vacío")
+
     String telefono,    
+    String dni,
     Long idHotel,
     CuentaBancariaRecord cuentaBancaria
 ) {
     public Propietario toPropietario() {
         Propietario propietario = new Propietario();
         propietario.setNombre(this.nombre);
+        propietario.setDni(this.dni);
         propietario.setEmail(this.email);
         propietario.setTelefono(this.telefono);        
         CuentaBancaria cuentaBancaria = this.cuentaBancaria.toCuentaBancaria();

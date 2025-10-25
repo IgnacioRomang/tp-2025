@@ -44,21 +44,24 @@ public class UserController {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
+    @Operation(summary = "Buscar usuarios por nombre", description = "Busca usuarios por nombre de forma paginada. Si no se especifica un nombre, devuelve todos los usuarios.")
     @GetMapping
     public Page<Usuario> buscarUsuariosPorNombre(@RequestParam(required = false) String nombre, Pageable pageable) {
         if (nombre == null || nombre.isEmpty()) {
-            return userService.buscarPorNombre("", pageable);
+            return userService.buscarTodos(pageable);
         }
         return userService.buscarPorNombre(nombre, pageable);
     }
 
+    @Operation(summary = "Buscar usuario por DNI", description = "Busca un usuario por su DNI exacto.")
     @GetMapping("/dni/{dni}")
     public ResponseEntity<Usuario> buscarUsuarioPorDni(@PathVariable String dni) {
-        Usuario usuario = userService.buscarPorDniExacto(dni);
-        if (usuario == null) return ResponseEntity.notFound().build();
-        return ResponseEntity.ok(usuario);
+        return userService.buscarPorDniExacto(dni)
+            .map(ResponseEntity::ok)
+            .orElse(ResponseEntity.notFound().build());
     }
 
+    @Operation(summary = "Buscar usuarios por DNI", description = "Busca usuarios por DNI de forma paginada.")
     @GetMapping("/buscar-dni")
     public Page<Usuario> buscarUsuariosPorDni(@RequestParam String dni, Pageable pageable) {
         return userService.buscarPorDni(dni, pageable);

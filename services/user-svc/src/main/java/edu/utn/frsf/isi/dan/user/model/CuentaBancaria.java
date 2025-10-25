@@ -3,6 +3,7 @@ package edu.utn.frsf.isi.dan.user.model;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "cuentas_bancarias")
@@ -24,6 +25,7 @@ public class CuentaBancaria {
     private Banco banco;
 
     @OneToOne(mappedBy = "cuentaBancaria")
+    @JsonIgnoreProperties("cuentaBancaria") 
     private Propietario propietario;
 
 }

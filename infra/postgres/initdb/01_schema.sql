@@ -18,6 +18,8 @@ CREATE TABLE IF NOT EXISTS tp_dan.hotel (
     latitud decimal(10,7),
     longitud decimal(10,7),
     telefono varchar(30),
+    hotel_status VARCHAR(255),
+    status_date TIMESTAMP,
     correo_contacto varchar(100),
     categoria integer NOT NULL
 );

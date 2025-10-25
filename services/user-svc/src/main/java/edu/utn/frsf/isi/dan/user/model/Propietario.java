@@ -1,6 +1,7 @@
 package edu.utn.frsf.isi.dan.user.model;
 
 import lombok.Data;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import jakarta.persistence.*;
@@ -14,6 +15,7 @@ public class Propietario extends Usuario {
 
     @OneToOne
     @JoinColumn(name = "cuenta_bancaria_id")
+    @JsonIgnoreProperties("propietario") 
     private CuentaBancaria cuentaBancaria;
 
     @Column(name = "hotel_id")

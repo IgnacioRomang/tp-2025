@@ -85,7 +85,11 @@ public class UserService {
         return usuarioRepository.findByDniContaining(dni, pageable);
     }
 
-    public Usuario buscarPorDniExacto(String dni) {
+    public Optional<Usuario> buscarPorDniExacto(String dni) {
         return usuarioRepository.findByDni(dni);
+    }
+
+    public Page<Usuario> buscarTodos(Pageable pageable) {
+        return usuarioRepository.findAll(pageable);
     }
 }

@@ -1,4 +1,8 @@
 package edu.utn.frsf.isi.dan.shared;
+
+
+import java.util.Date;
+
 import lombok.*;
 
 @Data
@@ -15,5 +19,6 @@ public class HotelDTO {
         private String telefono;
         private String correoContacto;
         private Integer categoria;
-   
+        private String statuString;
+        private Date statusDate;
 }

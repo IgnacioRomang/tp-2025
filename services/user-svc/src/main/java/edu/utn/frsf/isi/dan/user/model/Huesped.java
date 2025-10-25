@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -17,6 +18,7 @@ public class Huesped extends Usuario {
 
     private LocalDate fechaNacimiento;
     @OneToMany(mappedBy = "huesped")
+    @JsonIgnoreProperties("huesped") 
     private List<TarjetaCredito> tarjetaCredito;
 
 }

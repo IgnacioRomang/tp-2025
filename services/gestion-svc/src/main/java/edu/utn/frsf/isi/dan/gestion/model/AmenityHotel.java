@@ -7,6 +7,7 @@ import jakarta.persistence.Id;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import edu.utn.frsf.isi.dan.gestion.enums.Amenity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.JoinColumn;

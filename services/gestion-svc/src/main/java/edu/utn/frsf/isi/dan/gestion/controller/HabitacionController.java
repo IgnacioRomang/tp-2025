@@ -1,10 +1,11 @@
 /**
  * Controlador REST para la gestión de entidades {@link Habitacion}.
  * Proporciona endpoints para crear, obtener, actualizar y eliminar habitaciones.
- * 
+ *
  * <p>Las rutas expuestas por este controlador están bajo el prefijo <code>/habitaciones</code>.</p>
- * 
+ *
  * <ul>
+ *     <li><b>GET /habitaciones/search</b>: Busca habitaciones por criterios opcionales como precio, tipo y capacidad.</li>
  *     <li><b>POST /habitaciones</b>: Crea una nueva habitación.</li>
  *     <li><b>GET /habitaciones/{id}</b>: Obtiene una habitación por su identificador.</li>
  *     <li><b>GET /habitaciones</b>: Obtiene la lista de todas las habitaciones.</li>
@@ -12,7 +13,7 @@
  *     <li><b>DELETE /habitaciones/{id}</b>: Elimina una habitación por su identificador.</li>
  * </ul>
  * 
- * @author martindominguez
+ * @author martindominguez, Gemini Code Assist
  */
 package edu.utn.frsf.isi.dan.gestion.controller;
 
@@ -23,6 +24,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @RestController
@@ -60,5 +62,14 @@ public class HabitacionController {
         if (!habitacionService.findById(id).isPresent()) return ResponseEntity.notFound().build();
         habitacionService.deleteById(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/search")
+    public List<Habitacion> search(
+            @RequestParam Optional<Double> precioMin,
+            @RequestParam Optional<Double> precioMax,
+            @RequestParam Optional<Integer> tipoHabitacionId,
+            @RequestParam Optional<Integer> capacidad) {
+        return habitacionService.search(precioMin, precioMax, tipoHabitacionId, capacidad);
     }
 }
